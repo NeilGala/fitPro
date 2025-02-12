@@ -8,12 +8,12 @@ const KbottomContainerColor = Color(0xFFEB1555);
 const KlabelTextStyle = TextStyle(
   color: Color(0xFF8D8E98),
   fontWeight: FontWeight.bold,
-  fontSize: 23.0,
+  fontSize: 18.0,
 );
 
 const KnumberTextStyle = TextStyle(
   color: Color(0xFFFFFFFF),
-  fontSize: 40.0,
+  fontSize: 30.0,
   fontWeight: FontWeight.w900,
 );
 
@@ -44,4 +44,22 @@ const KBMItextStyle = TextStyle(
 const KbodyTextStyle = TextStyle(
   color: Color(0xFFFFFFFF),
   fontSize: 22.0,
+);
+
+const KDrawerTextStyle = TextStyle(
+  color: Colors.black,
+  fontSize: 12.0,
+  fontWeight: FontWeight.w400,
+);
+
+const KDetailsTextStyle1 = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.w400,
+  fontSize: 15.0,
+);
+
+const KDetailsTextStyle2 = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.normal,
+  fontSize: 10.0,
 );

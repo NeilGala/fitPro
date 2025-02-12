@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../components/reusable_card.dart';
-import 'package:fitpro/screens/input_page.dart';
 import 'package:fitpro/components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {

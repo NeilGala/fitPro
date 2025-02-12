@@ -1,34 +1,35 @@
 import 'package:flutter/material.dart';
-import '../components/reusable_card.dart';
-import '../components/icon_content.dart';
 import '../constants.dart';
-import 'results_page.dart';
-import '../components/bottom_button.dart';
-import '../components/round_icon_button.dart';
-import 'package:fitpro/brain.dart';
 import '../components/new_bar_interface.dart';
+import 'input_page.dart';
 import 'package:fitpro/screens/input_page_2.dart';
-import 'input_page_3.dart';
 import 'input_page_4.dart';
+import 'package:fitpro/components/reusable_card.dart';
+import 'package:fitpro/components/bottom_button.dart';
+import 'package:fitpro/components/icon_content.dart';
+import 'package:fitpro/components/round_icon_button.dart';
+import 'package:fitpro/components/bottom_button.dart';
+import 'package:fitpro/brain.dart';
+import 'results_page.dart';
 
 enum Gender {
   male,
   female,
 }
 
-class InputPage extends StatefulWidget {
-  InputPage({required this.title});
+class InputPage3 extends StatefulWidget {
+  InputPage3({required this.title});
   final String title;
+
   @override
-  _InputPageState createState() => _InputPageState();
+  State<InputPage3> createState() => _InputPage3State();
 }
 
-class _InputPageState extends State<InputPage> {
+class _InputPage3State extends State<InputPage3> {
   Gender? selectedGender;
   int height = 170;
   int weight = 50;
   int age = 15;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

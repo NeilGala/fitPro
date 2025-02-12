@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
-import '../components/reusable_card.dart';
-import '../components/icon_content.dart';
 import '../constants.dart';
-import 'results_page.dart';
-import '../components/bottom_button.dart';
-import '../components/round_icon_button.dart';
-import 'package:fitpro/brain.dart';
 import '../components/new_bar_interface.dart';
-import 'package:fitpro/screens/input_page_2.dart';
+import 'input_page.dart';
 import 'input_page_3.dart';
 import 'input_page_4.dart';
+import 'package:fitpro/components/reusable_card.dart';
+import 'package:fitpro/components/bottom_button.dart';
+import 'package:fitpro/components/icon_content.dart';
+import 'package:fitpro/components/round_icon_button.dart';
+import 'package:fitpro/components/bottom_button.dart';
+import 'package:fitpro/brain.dart';
+import 'results_page.dart';
 
 enum Gender {
   male,
   female,
 }
 
-class InputPage extends StatefulWidget {
-  InputPage({required this.title});
+class InputPage2 extends StatefulWidget {
+  InputPage2({required this.title});
   final String title;
+
   @override
-  _InputPageState createState() => _InputPageState();
+  State<InputPage2> createState() => _InputPage2State();
 }
 
-class _InputPageState extends State<InputPage> {
+class _InputPage2State extends State<InputPage2> {
   Gender? selectedGender;
   int height = 170;
   int weight = 50;
