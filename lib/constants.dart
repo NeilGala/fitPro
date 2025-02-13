@@ -13,7 +13,7 @@ const KlabelTextStyle = TextStyle(
 
 const KnumberTextStyle = TextStyle(
   color: Color(0xFFFFFFFF),
-  fontSize: 30.0,
+  fontSize: 25.0,
   fontWeight: FontWeight.w900,
 );
 
@@ -25,7 +25,7 @@ const KlargeButtonTextStyle = TextStyle(
 
 const KlargeLabelTextStyle = TextStyle(
   color: Color(0xFFFFFFFF),
-  fontSize: 40.0,
+  fontSize: 30.0,
   fontWeight: FontWeight.bold,
 );
 
@@ -43,7 +43,7 @@ const KBMItextStyle = TextStyle(
 
 const KbodyTextStyle = TextStyle(
   color: Color(0xFFFFFFFF),
-  fontSize: 22.0,
+  fontSize: 20.0,
 );
 
 const KDrawerTextStyle = TextStyle(
@@ -62,4 +62,16 @@ const KDetailsTextStyle2 = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.normal,
   fontSize: 10.0,
+);
+
+const KDetailsTextStyle3 = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.normal,
+  fontSize: 15.0,
+);
+
+const KDetailsTextStyle4 = TextStyle(
+  color: Colors.black,
+  fontWeight: FontWeight.normal,
+  fontSize: 15.0,
 );

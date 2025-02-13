@@ -11,6 +11,7 @@ import 'package:fitpro/components/round_icon_button.dart';
 import 'package:fitpro/components/bottom_button.dart';
 import 'package:fitpro/brain.dart';
 import 'results_page.dart';
+import 'package:fitpro/components/generalised_drawer_widget.dart';
 
 enum Gender {
   male,
@@ -30,6 +31,7 @@ class _InputPage2State extends State<InputPage2> {
   int height = 170;
   int weight = 50;
   int age = 15;
+  String dropdownValue = 'Choose Activity Level';
 
   @override
   Widget build(BuildContext context) {
@@ -54,136 +56,7 @@ class _InputPage2State extends State<InputPage2> {
         ),
         backgroundColor: Color(0xFF1B1F33),
       ),
-      drawer: Drawer(
-        child: ListView(
-          //  Ensure that ListView doesn't have any padding.
-          //  This line will Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF1E2239),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.account_circle,
-                        size: 35.0,
-                        color: Colors.white,
-                      ),
-                      SizedBox(width: 1.0),
-                      Text(
-                        'John Doe',
-                        style: KDetailsTextStyle1,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 1.0,
-                  ),
-                  Text(
-                    'johndoe@gmail.com',
-                    style: KDetailsTextStyle2,
-                  ),
-                  Divider(
-                    color: Colors.white,
-                    thickness: 1.0,
-                  ),
-                  SizedBox(height: 20.0),
-                  Text(
-                    'Health Metrix',
-                    style: KDetailsTextStyle1,
-                  ),
-                ],
-              ),
-            ),
-            newBarInterfaces(
-              icon: Icons.scale_sharp,
-              label: 'Body Mass Index(BMI)',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => InputPage(title: 'BMI'),
-                  ),
-                );
-              },
-            ),
-            SizedBox(
-              height: 3.0,
-            ),
-            Divider(
-              color: Colors.black,
-              thickness: 1.0,
-            ),
-            SizedBox(
-              height: 3.0,
-            ),
-            newBarInterfaces(
-              icon: Icons.bolt_outlined,
-              label: 'Total Daily Energy Expenditure(TDEE)',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => InputPage2(title: 'TDEE'),
-                  ),
-                );
-              },
-            ),
-            SizedBox(
-              height: 3.0,
-            ),
-            Divider(
-              color: Colors.black,
-              thickness: 1.0,
-            ),
-            SizedBox(
-              height: 3.0,
-            ),
-            newBarInterfaces(
-              icon: Icons.monitor_heart_outlined,
-              label: 'Basal Metabolic Rate(BMR)',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => InputPage3(title: 'BMR'),
-                  ),
-                );
-              },
-            ),
-            SizedBox(
-              height: 3.0,
-            ),
-            Divider(
-              color: Colors.black,
-              thickness: 1.0,
-            ),
-            SizedBox(
-              height: 3.0,
-            ),
-            newBarInterfaces(
-              icon: Icons.height_outlined,
-              label: 'Waist to Height Ratio(WHtR)',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => InputPage4(title: 'WHtR'),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: GeneralisedDrawerWidget(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -371,6 +244,87 @@ class _InputPage2State extends State<InputPage2> {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Container(
+              margin: EdgeInsets.all(2.0),
+              padding: EdgeInsets.symmetric(
+                  vertical: 5.0,
+                  horizontal: 15.0), // Decreased vertical padding
+              decoration: BoxDecoration(
+                color: Color(0xFF1B1F33), // Background color of the button
+                borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                border: Border.all(
+                    color: Colors.white,
+                    width: 0.5), // Border color and thickness
+              ),
+              child: DropdownButtonHideUnderline(
+                // Hide the default underline
+                child: DropdownButton<String>(
+                  value: dropdownValue == 'Choose Activity Level'
+                      ? null
+                      : dropdownValue,
+                  hint: Text(
+                    'Choose Activity Level',
+                    style: KDetailsTextStyle3.copyWith(
+                        color: Colors.white), // Hint text color
+                  ),
+                  dropdownColor:
+                      Color(0xFF111328), // Background color of the dropdown
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    color: Colors.white,
+                    size: 40.0,
+                  ), // Dropdown icon color
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownValue = newValue!;
+                      print('$newValue is pressed');
+                    });
+                  },
+                  items: <String>[
+                    'Little/No Exercise',
+                    '1–3 Days/Week',
+                    '3–5 Days/Week',
+                    '6–7 Days/Week',
+                    'Intense Training'
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Container(
+                        color: dropdownValue == value
+                            ? Color(0xFF1B1F33)
+                            : Colors
+                                .transparent, // Change color for selected option
+                        padding: EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 10.0),
+                        child: Text(
+                          value,
+                          style: KDetailsTextStyle4.copyWith(
+                              color: Colors.white), // Dropdown item text color
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                  selectedItemBuilder: (BuildContext context) {
+                    return <String>[
+                      'Little/No Exercise',
+                      '1–3 Days/Week',
+                      '3–5 Days/Week',
+                      '6–7 Days/Week',
+                      'Intense Training'
+                    ].map<Widget>((String value) {
+                      return Text(
+                        value,
+                        style: KDetailsTextStyle3.copyWith(
+                            color: Colors.white), // Selected item text color
+                      );
+                    }).toList();
+                  },
+                ),
+              ),
+            ),
+          ),
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
@@ -395,3 +349,4 @@ class _InputPage2State extends State<InputPage2> {
     );
   }
 }
+
