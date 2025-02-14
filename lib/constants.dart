@@ -75,3 +75,16 @@ const KDetailsTextStyle4 = TextStyle(
   fontWeight: FontWeight.normal,
   fontSize: 15.0,
 );
+
+//TDEE User Interface
+const KtdeeResult = TextStyle(
+  color: Colors.white,
+  fontSize: 50.0,
+  fontWeight: FontWeight.bold,
+);
+
+const KtdeeMessage = TextStyle(
+  color: Colors.white,
+  fontSize: 15.0,
+  fontWeight: FontWeight.normal,
+);

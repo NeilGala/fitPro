@@ -12,6 +12,7 @@ import 'package:fitpro/components/bottom_button.dart';
 import 'package:fitpro/brain.dart';
 import 'results_page.dart';
 import 'package:fitpro/components/generalised_drawer_widget.dart';
+import 'results_page_2.dart';
 
 enum Gender {
   male,
@@ -31,6 +32,7 @@ class _InputPage2State extends State<InputPage2> {
   int height = 170;
   int weight = 50;
   int age = 15;
+  double activityLevel = 0;
   String dropdownValue = 'Choose Activity Level';
 
   @override
@@ -279,7 +281,23 @@ class _InputPage2State extends State<InputPage2> {
                   onChanged: (String? newValue) {
                     setState(() {
                       dropdownValue = newValue!;
-                      print('$newValue is pressed');
+                      switch (newValue) {
+                        case 'Little/No Exercise':
+                          activityLevel = 1.2;
+                          break;
+                        case '1–3 Days/Week':
+                          activityLevel = 1.375;
+                          break;
+                        case '3–5 Days/Week':
+                          activityLevel = 1.55;
+                          break;
+                        case '6–7 Days/Week':
+                          activityLevel = 1.725;
+                          break;
+                        case 'Intense Training':
+                          activityLevel = 1.9;
+                          break;
+                      }
                     });
                   },
                   items: <String>[
@@ -292,10 +310,6 @@ class _InputPage2State extends State<InputPage2> {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Container(
-                        color: dropdownValue == value
-                            ? Color(0xFF1B1F33)
-                            : Colors
-                                .transparent, // Change color for selected option
                         padding: EdgeInsets.symmetric(
                             vertical: 5.0, horizontal: 10.0),
                         child: Text(
@@ -306,21 +320,6 @@ class _InputPage2State extends State<InputPage2> {
                       ),
                     );
                   }).toList(),
-                  selectedItemBuilder: (BuildContext context) {
-                    return <String>[
-                      'Little/No Exercise',
-                      '1–3 Days/Week',
-                      '3–5 Days/Week',
-                      '6–7 Days/Week',
-                      'Intense Training'
-                    ].map<Widget>((String value) {
-                      return Text(
-                        value,
-                        style: KDetailsTextStyle3.copyWith(
-                            color: Colors.white), // Selected item text color
-                      );
-                    }).toList();
-                  },
                 ),
               ),
             ),
@@ -328,17 +327,18 @@ class _InputPage2State extends State<InputPage2> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
-              CalculatorBrain obj = CalculatorBrain(
+              CalculatorBrain2 obj2 = CalculatorBrain2(
                 height: height,
                 weight: weight,
+                age: age,
+                activityLevel: activityLevel,
               );
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultsPage(
-                    resultText: obj.getResult(),
-                    BMIresult: obj.calculateBMI(),
-                    interpretation: obj.getInterpretation(),
+                  builder: (context) => ResultsPage2(
+                    TDEEresult: obj2.getResult(),
+                    interpretation: obj2.getInterpretation(),
                   ),
                 ),
               );
@@ -349,4 +349,3 @@ class _InputPage2State extends State<InputPage2> {
     );
   }
 }
-
